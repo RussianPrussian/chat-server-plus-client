@@ -1,0 +1,15 @@
+10-18 15:03:10 database: opening /Users/alex/sockets/SimpleMessageService/tcp/localhost:3306/~
+java.lang.IllegalArgumentException: Prefix string too short
+	at java.io.File.createTempFile(File.java:2001)
+	at org.h2.util.FileUtils.createTempFile(FileUtils.java:399)
+	at org.h2.engine.Database.createTempFile(Database.java:1073)
+	at org.h2.engine.Database.open(Database.java:541)
+	at org.h2.engine.Database.<init>(Database.java:186)
+	at org.h2.engine.Engine.openSession(Engine.java:50)
+	at org.h2.engine.Engine.getSession(Engine.java:98)
+	at org.h2.engine.Session.createSession(Session.java:139)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:928)
+	at org.h2.Driver.connect(Driver.java:52)
+	at java.sql.DriverManager.getConnection(DriverManager.java:664)
+	at java.sql.DriverManager.getConnection(DriverManager.java:247)
+	at SimpleMessageService.main(SimpleMessageService.java:24)

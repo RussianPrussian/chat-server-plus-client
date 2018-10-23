@@ -1,0 +1,12 @@
+10-18 15:52:17 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery [90002-60]
+	at org.h2.message.Message.getSQLException(Message.java:84)
+	at org.h2.message.Message.getSQLException(Message.java:88)
+	at org.h2.message.Message.getSQLException(Message.java:66)
+	at org.h2.message.Message.getSQLException(Message.java:109)
+	at org.h2.command.Prepared.query(Prepared.java:92)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:73)
+	at org.h2.command.Command.executeQueryLocal(Command.java:71)
+	at org.h2.command.Command.executeQuery(Command.java:60)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:68)
+	at SimpleMessageService.main(SimpleMessageService.java:25)
