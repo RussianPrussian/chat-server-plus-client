@@ -40,10 +40,7 @@ public class ReadInput implements Callable<String> {
 			readCompleted.set(false);
 			readCompletedLock.unlock();
 			line = in.readLine();
-			System.out.println("Read in Line: " + line);
-			System.out.println("Finished the read.");
 			readCompletedLock.lock();
-			System.out.println("Readable acquired lock to set it to true");
 			//i.e. we're making sure that when we read the line, we really don't complete the read
 			//until the message is actually available
 			if(line != null) {

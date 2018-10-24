@@ -21,6 +21,8 @@ public class ClientFrame extends JFrame{
 	
 	public ClientFrame(ChatConnector chatConn) {
 		
+		this.setTitle("Chat Away Your Life");
+		
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gc = new GridBagConstraints();
 		gc.gridx = 0;
@@ -46,7 +48,7 @@ public class ClientFrame extends JFrame{
 		
 		SwingUtilities.invokeLater(()->{
 			JFrame frame = new ClientFrame(chatConnector);
-			frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+			frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 			frame.setVisible(true);
 			frame.setSize(800, 500);
 			new Thread(chatConnector).start();

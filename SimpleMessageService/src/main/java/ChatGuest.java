@@ -158,8 +158,6 @@ public class ChatGuest implements Runnable {
 					
 					if(mostRecentMessage == null) {
 						try {
-							System.out.println(readerCallable.readCompleted());
-							
 							mostRecentMessage = SimpleMessageService.startRead(readerCallable).get(READ_TIMEOUT, TimeUnit.SECONDS);
 							if(mostRecentMessage != null) {
 								mostRecentMessage = readerCallable.getMessage();//guaranteed no read started, so clear the queue

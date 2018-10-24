@@ -13,6 +13,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
@@ -21,16 +22,33 @@ import chat.observable.ObservableMessage;
 
 public class ServerInputPanel extends JPanel implements ActionListener{
 	
+	private static final int BROWN_SHADE = 0x848375;
+	private static final int BLACK_SHADE = 0x252120;
+	private static final int GREEN_SHADE = 0x91C7A9;
+	private static final int TAN_SHADE = 0xE5DFC5;
+	
 	private JTextArea inputTextArea;
 	private JButton sendMessageButton;
 	private ObservableMessage messageToSend;
+	private JScrollPane scrollPane;
 	
 	public ServerInputPanel() {
+		
 		this.messageToSend = ObservableMediator.getObservableMessage("messageToSend");
 		
 		this.inputTextArea = new JTextArea();
+		this.inputTextArea.setLineWrap(true);
+		this.inputTextArea.setWrapStyleWord(true);
+		this.inputTextArea.setBackground(new Color(BLACK_SHADE));
+		this.inputTextArea.setForeground(new Color(TAN_SHADE));
+		this.scrollPane = new JScrollPane(this.inputTextArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		this.scrollPane.setBorder(BorderFactory.createLineBorder(new Color(BROWN_SHADE)));
 		this.sendMessageButton = new JButton("Submit");
 		this.sendMessageButton.addActionListener(this);
+		this.sendMessageButton.setBackground(new Color(TAN_SHADE));
+		this.sendMessageButton.setForeground(new Color(BLACK_SHADE));
+		this.setBorder(BorderFactory.createLineBorder(new Color(BLACK_SHADE)));
+		
 		Action enterAction =  new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -66,7 +84,7 @@ public class ServerInputPanel extends JPanel implements ActionListener{
 		gc.fill = GridBagConstraints.BOTH;
 		gc.weightx = .9;
 		gc.weighty = 1;
-		this.add(inputTextArea, gc);
+		this.add(this.scrollPane, gc);
 		
 		gc.gridx = 1;
 		gc.gridy = 0;
