@@ -9,7 +9,39 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
+	id 'java'
 }
+
+sourceSets {
+	jar {
+		java {
+			srcDir 'src/main/java'
+		}
+		resources {
+			srcDir 'src/main/resources'
+		}
+		compileClasspath += sourceSets.main.runtimeClasspath
+	}
+}
+
+jar {
+	manifest {
+		attributes(
+			"Main-Class": "SimpleMessageService"
+		)
+	}
+}
+
+task fatJar(type: Jar) {
+	manifest {
+		attributes 'Implementation-Title': 'Message Service',
+			"Main-Class": "SimpleMessageService"
+	}
+	baseName = project.name + '-all'
+	from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+	with jar
+}
+
 
 dependencies {
     // This dependency is exported to consumers, that is to say found on their compile classpath.
@@ -20,6 +52,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 	compile group: 'org.mindrot', name: 'jbcrypt', version: '0.3m'
 	compile group: 'com.h2database', name: 'h2', version: '1.0.60'
+	runtime group: 'com.h2database', name: 'h2', version: '1.0.60'
 }
 
 // In this section you declare where to find the dependencies of your project

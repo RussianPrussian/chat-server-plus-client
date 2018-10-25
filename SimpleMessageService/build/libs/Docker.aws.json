@@ -1,0 +1,14 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "russianprussian/messageservice:lts",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "8091"
+    }
+  ],
+  "Logging": "/var/log/nginx"
+
+}

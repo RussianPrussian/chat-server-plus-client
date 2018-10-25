@@ -14,6 +14,7 @@ public class SimpleMessageService {
 	private static Map<String, ChatGuest> loggedInUsers = new ConcurrentHashMap<String, ChatGuest>();
 	private static ExecutorService threadPool;
 	public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
+		System.out.println("Setting up database..");
 		threadPool = Executors.newCachedThreadPool();
 		Class.forName ("org.h2.Driver");
 		DatabaseManager manager = null;
@@ -22,6 +23,8 @@ public class SimpleMessageService {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("Database up and running.");
+		System.out.println("Setting up server to listen on 8091.");
 		ServerSocket listener = new ServerSocket(8091);
 		try {
 			while(true) {

@@ -19,9 +19,10 @@ public class ChatConnector implements Runnable, PropertyChangeListener{
 	private PrintWriter writerToServer;
 	Socket socket;
 	private ObservableMessage mostRecentServerMessage;
+	private static final String hostName = "yolo-message-service.us-east-2.elasticbeanstalk.com";
 	
 	public ChatConnector() throws UnknownHostException, IOException {
-		InetAddress address = InetAddress.getByName("localhost");
+		InetAddress address = InetAddress.getByName(hostName);
 		socket = new Socket(address, 8091);
 		serverFeed = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 		writerToServer = new PrintWriter(socket.getOutputStream());
